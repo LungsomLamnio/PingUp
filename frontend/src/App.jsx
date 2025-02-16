@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
-import API from "./api";
+import { Routes, Route } from "react-router-dom";
+import RolePage from "../src/pages/RolePage";
+import UserLogin from "../src/pages/UserLogin";
+import AdminLogin from "../src/pages/AdminLogin";
 
 function App() {
-  const [message, setMessage] = useState("connecting....");
-
-  useEffect(() => {
-    API.get("/")
-      .then((res) => setMessage(res.data))
-      .catch(() => setMessage("Failed to connect with the backend..."));
-  }, []);
-
   return (
-    <div className="app">
-      <h1>{message}</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<RolePage />} />
+      <Route path="/user-login" element={<UserLogin />} />
+      <Route path="/admin-login" element={<AdminLogin />} />
+    </Routes>
   );
 }
 
