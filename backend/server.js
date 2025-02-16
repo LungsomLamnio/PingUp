@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 const mongoose = require("mongoose");
+const connectDB = require("./config/db.js");
 
 dotenv.config({ path: path.join(__dirname, "../.env") });
 
@@ -16,10 +17,7 @@ app.use(
   })
 );
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+connectDB();
 
 app.use(express.json());
 
