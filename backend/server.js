@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(
   cors({
     origin: "http://localhost:5173",
+
     credentials: true,
   })
 );
@@ -20,6 +21,9 @@ app.use(
 connectDB();
 
 app.use(express.json());
+
+const authRoutes = require("./routes/auth.js");
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend is Running!");
