@@ -12,18 +12,15 @@ function UserRegistrationPage() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
 
-    // Simple validation
     if (!formData.username || !formData.email || !formData.password) {
       setError("All fields are required!");
       return;
@@ -45,7 +42,7 @@ function UserRegistrationPage() {
       }
 
       setSuccess("Registration successful! Redirecting...");
-      setTimeout(() => navigate("/user-login"), 2000); // Redirect after success
+      setTimeout(() => navigate("/user-login"), 2000);
     } catch (err) {
       setError(err.message);
     }

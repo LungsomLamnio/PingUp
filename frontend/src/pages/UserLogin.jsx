@@ -11,12 +11,10 @@ function UserLogin() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -43,9 +41,9 @@ function UserLogin() {
       }
 
       setSuccess("Login successful! Redirecting...");
-      localStorage.setItem("token", data.token); // Store token for authentication
+      localStorage.setItem("token", data.token);
 
-      setTimeout(() => navigate("/dashboard"), 2000); // Redirect after success
+      setTimeout(() => navigate("/dashboard"), 2000);
     } catch (err) {
       setError(err.message);
     }
